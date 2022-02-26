@@ -16,7 +16,7 @@ export const UserSchema = new mongoose.Schema({
   name: { type: String, required: [true, 'user name is required'] },
   surname: String,
   image: String,
-  email: String,
+  email: {type:String,unique:true},
   password: String,
   birthDay: Date,
   audit: Object

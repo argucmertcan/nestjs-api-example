@@ -1,11 +1,16 @@
 import { Body, Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
-import { UserCreateDto, UserUpdateDto } from 'src/user/user.dto';
+import { UserCreateDto, UserLoginDto, UserUpdateDto } from 'src/user/user.dto';
 import { UserModel } from 'src/user/models/user.model';
 import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
   constructor(private UserService: UserService) {
+  }
+
+  @Post('login')
+  async loginUser(@Body() body: UserLoginDto): Promise<UserModel> {
+    return await this.UserService.loginUser(body)
   }
 
   @Post()
