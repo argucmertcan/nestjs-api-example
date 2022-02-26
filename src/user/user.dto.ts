@@ -8,7 +8,6 @@ export class UserCreateDto {
   password:string;
   @IsEmail()
   email:string;
-  @IsDate()
   birthDay:Date;
 }
 

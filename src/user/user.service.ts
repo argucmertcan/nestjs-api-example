@@ -3,6 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { UserCreateDto,UserUpdateDto } from 'src/user/user.dto';
 import { UserModel } from 'src/user/models/user.model';
 import { Model } from 'mongoose'
+import env from '../../environments/env'
+
+const bcrypt = require('bcrypt')
+const saltRound = 10
+const hastText = env.hastText
 
 
 @Injectable()
@@ -35,4 +40,16 @@ export class UserService {
     return await this.userMongo.findByIdAndUpdate(id,newModel,{new:true}).exec()
   }
 
+  async convertToHash(value:string){
+    let hashPwd;
+    await bcrypt.hash(`${hastText}${value}`,saltRound).then(hash=>{
+      hashPwd = hash
+    });
+    return await hashPwd
+  }
+
+  async compareToHash(password,hashed){
+    const match = await bcrypt.compareSync(`${hastText}${password}`,hashed)
+    return await match
+  }
 }

@@ -10,6 +10,7 @@ export class UserController {
 
   @Post()
   async createUser(@Body() body: UserCreateDto): Promise<UserModel> {
+    body.password = await this.UserService.convertToHash(body.password)
     return await this.UserService.create(body)
   }
 
