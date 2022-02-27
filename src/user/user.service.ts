@@ -8,7 +8,7 @@ import * as jwt from 'jsonwebtoken'
 
 const bcrypt = require('bcrypt')
 const saltRound = 10
-const hastText = env.hastText
+const hashText = env.hashText
 
 
 @Injectable()
@@ -77,14 +77,14 @@ export class UserService {
 
   async convertToHash(value: string) {
     let hashPwd;
-    await bcrypt.hash(`${hastText}${value}`, saltRound).then(hash => {
+    await bcrypt.hash(`${hashText}${value}`, saltRound).then(hash => {
       hashPwd = hash
     });
     return await hashPwd
   }
 
   async compareToHash(password, hashed) {
-    const match = await bcrypt.compareSync(`${hastText}${password}`, hashed)
+    const match = await bcrypt.compareSync(`${hashText}${password}`, hashed)
     return await match
   }
 }
