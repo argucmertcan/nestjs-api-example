@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { UserCreateDto, UserLoginDto, UserUpdateDto } from 'src/user/user.dto';
+import { UserCreateDto, UserLoginDto, UserUpdateDto } from 'src/user/user.interface';
 import { UserModel } from 'src/user/models/user.model';
 import { Model } from 'mongoose'
 import env from '../../environments/env'
