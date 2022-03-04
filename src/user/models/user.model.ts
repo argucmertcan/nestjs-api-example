@@ -1,4 +1,3 @@
-import { AuditModel } from "./audit.model";
 import * as mongoose from 'mongoose'
 
 export class UserModel {
@@ -9,7 +8,6 @@ export class UserModel {
   email: string;
   password: string;
   birthDay: Date;
-  audit: AuditModel;
 }
 
 export const UserSchema = new mongoose.Schema({
