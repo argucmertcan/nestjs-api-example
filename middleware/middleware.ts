@@ -7,7 +7,6 @@ import env from '../environments/env'
 export class TokenMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: Function) {
     const authJsonWebToken = req.headers.authorization
-    console.log("asasas",)
     if (req.url !== '/user/login') {
       if (!authJsonWebToken) {
         next()
