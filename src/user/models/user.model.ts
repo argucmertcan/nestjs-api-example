@@ -7,15 +7,15 @@ export class UserModel {
   image: string;
   email: string;
   password: string;
-  birthDay: Date;
+  createdAt: Date;
 }
 
 export const UserSchema = new mongoose.Schema({
   name: { type: String, required: [true, 'user name is required'] },
   surname: String,
   image: String,
-  email: {type:String,unique:true},
+  email: { type: String, unique: true },
   password: String,
-  birthDay: Date,
+  createdAt: Date,
   audit: Object
 })
